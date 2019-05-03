@@ -7,10 +7,7 @@ from charmhelpers.core.host import adduser, chownr
 from charms.reactive import when, when_not, set_flag
 
 from charms.layer import status
-from charms.layer.venv import (
-        call_from_env,
-        ENV_BIN as DEVPI_ENV_BIN,
-)
+from charms.layer.venv import ENV_BIN as DEVPI_ENV_BIN
 
 
 DEVPI_PATH = Path('/usr/lib/devpi')
@@ -27,8 +24,8 @@ def configured_devpi():
     # initialize devpi
     adduser('devpi')
     chownr(str(DEVPI_PATH), 'devpi', 'devpi', chowntopdir=True)
-    call_from_env(['sudo', '-u', 'devpi', str(devpi_server_bin),
-                   '--init', '--serverdir', str(DEVPI_PATH)])
+    check_call(['sudo', '-u', 'devpi', str(devpi_server_bin),
+                '--init', '--serverdir', str(DEVPI_PATH)])
 
     # render service
     render('devpi.service', '/etc/systemd/system/devpi.service', context={
