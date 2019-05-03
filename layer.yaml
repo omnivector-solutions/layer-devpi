@@ -1,0 +1,9 @@
+repo: https://github.com/omnivector-solutions/layer-devpi.git
+includes:
+- layer:basic
+- layer:status
+- layer:venv
+options:
+  venv:
+    packages:
+      - devpi-web

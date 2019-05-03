@@ -1,0 +1,15 @@
+[Unit]
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=forking
+PIDFile={{devpi_path}}/.xproc/devpi-server/xprocess.PID
+Restart=always
+ExecStart={{devpi_server_bin}} --serverdir {{devpi_path}} --host 0.0.0.0 --start
+ExecStop={{devpi_server_bin}} --serverdir {{devpi_path}} --host 0.0.0.0 --stop
+User=devpi
+SuccessExitStatus=SIGKILL
+
+[Install]
+WantedBy=multi-user.target

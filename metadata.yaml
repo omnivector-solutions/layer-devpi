@@ -1,0 +1,11 @@
+name: devpi
+series: 
+- bionic
+summary: A powerful PyPI-compatible server
+maintainer: tylerscheuble <tyler@scheuble.us>
+description: |
+  A powerful PyPI-compatible server.
+tags:
+- omnivector
+- misc
+# TODO: HTTP interface support
